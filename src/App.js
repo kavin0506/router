@@ -2,10 +2,15 @@
 import './App.css';
 import Card from './card';
 import Nav from './Nav';
-import {Route,Routes} from "react-router-dom";
+import { Route,Routes} from "react-router-dom";
 import About from './About';
 import Contact from './Contact';
 import Error from './Error';
+import Form from './Form';
+import Dashboard from './Dashboard';
+import Veg from './Veg';
+import Biryani from './Biriyani';
+import Params from './Params';
 
 function App() {
   const swiggy=[
@@ -92,14 +97,21 @@ function App() {
   ]
   return (
     <div className="App">
+       
       <Routes>
         <Route path='/' element={<Nav/>}/>
+        <Route path='/params/:num' element={<Params/>}/>
         <Route path='/products' element={<Card  menu={swiggy}/>}/>
         <Route path='/about' element={<About/> }/>
         <Route path='/Contact' element={<Contact/>}/>
         <Route path='*' element={<Error/>} />
+        <Route path='/Dash' element={<Dashboard/>} />
+        <Route path="/food">
+          <Route path='veg' element={<Veg/>}/>
+          <Route path='biriyani' element={<Biryani/>}/>
+        </Route>
       </Routes>
-      
+       <Form/>
     </div>
   );
 }
